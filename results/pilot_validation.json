@@ -1,0 +1,10 @@
+{
+  "pilot_id": "UCA-EXCLUDED-PILOT-001",
+  "evidentiary": false,
+  "planned": 40,
+  "completed": 40,
+  "failed": 0,
+  "l4_replays": 10,
+  "validation_pass": true,
+  "validation_errors": []
+}
