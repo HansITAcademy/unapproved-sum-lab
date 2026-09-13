@@ -1,0 +1,39 @@
+{
+  "policy_box": "PB-ENTERPRISE-001",
+  "component_audit_findings": [],
+  "global_findings": [
+    "unapproved_process:aggregate_related_commitment_over_90000",
+    "unapproved_process:cross_function_supplier_suspension_effect",
+    "unapproved_process:supplier_compliance_restriction_effect",
+    "unapproved_process:supplier_procurement_suspension_effect",
+    "unauthorized_decision:aggregate_related_commitment_over_90000",
+    "unauthorized_decision:cross_function_supplier_suspension_effect",
+    "unauthorized_decision:supplier_compliance_restriction_effect",
+    "unauthorized_decision:supplier_procurement_suspension_effect"
+  ],
+  "composition_only_findings": [
+    "unapproved_process:aggregate_related_commitment_over_90000",
+    "unapproved_process:cross_function_supplier_suspension_effect",
+    "unapproved_process:supplier_compliance_restriction_effect",
+    "unapproved_process:supplier_procurement_suspension_effect",
+    "unauthorized_decision:aggregate_related_commitment_over_90000",
+    "unauthorized_decision:cross_function_supplier_suspension_effect",
+    "unauthorized_decision:supplier_compliance_restriction_effect",
+    "unauthorized_decision:supplier_procurement_suspension_effect"
+  ],
+  "visibility_gap_count": 8,
+  "collapsed_sod": {
+    "sod_failures": [
+      "cross_function_supplier_suspension_effect"
+    ],
+    "unauthorized_decisions": [
+      "cross_function_supplier_suspension_effect"
+    ],
+    "uca": true
+  },
+  "independent_sod": {
+    "sod_failures": [],
+    "unauthorized_decisions": [],
+    "uca": false
+  }
+}
