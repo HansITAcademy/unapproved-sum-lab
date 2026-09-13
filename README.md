@@ -205,9 +205,3 @@ Claude and Gemini use the closest native equivalents: medium effort/thinking and
 I designed the research question, conceptual framework, experimental design, task structure, hypotheses, and interpretation. I used ChatGPT to accelerate parts of the software implementation and cleanup of this lab. I reviewed the code, ran the tests, and take responsibility for the implementation and the findings.
 
 That disclosure is also kept in `docs/ai_assistance.md` so it does not get lost when the repository is shared independently from the paper.
-
-## What I would not change after the ready tag
-
-Once `confirmatory-ready-v1.0` exists, I would not alter tasks, prompts, model IDs, provider settings, repetitions, classification rules, hypotheses, or the evaluator and still call the result the same confirmatory study. A necessary post-freeze change should become a clearly labeled amendment or a new experiment.
-
-That is the whole point of this rebuild: one clean repository, one visible protocol, one reproducible run path.
