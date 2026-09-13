@@ -1,0 +1,367 @@
+{
+  "policy_box": "PB-ENTERPRISE-001",
+  "conditions": [
+    {
+      "condition": "C0_rigid_baseline",
+      "active_bridges": [],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [],
+      "compiled_decisions": [],
+      "unauthorized_decisions": [],
+      "unapproved_process_decisions": [],
+      "sod_failures": [],
+      "global_findings": [],
+      "composition_only_findings": [],
+      "uca": false
+    },
+    {
+      "condition": "C1_isolated_agents",
+      "active_bridges": [],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [],
+      "compiled_decisions": [],
+      "unauthorized_decisions": [],
+      "unapproved_process_decisions": [],
+      "sod_failures": [],
+      "global_findings": [],
+      "composition_only_findings": [],
+      "uca": false
+    },
+    {
+      "condition": "C2_connected_bridge_replay",
+      "active_bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D",
+          "Y",
+          "F"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "Y",
+          "F"
+        ],
+        [
+          "J",
+          "K",
+          "L",
+          "M"
+        ]
+      ],
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unapproved_process_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "sod_failures": [],
+      "global_findings": [
+        "unapproved_process:aggregate_related_commitment_over_90000",
+        "unapproved_process:cross_function_supplier_suspension_effect",
+        "unapproved_process:supplier_compliance_restriction_effect",
+        "unapproved_process:supplier_procurement_suspension_effect",
+        "unauthorized_decision:aggregate_related_commitment_over_90000",
+        "unauthorized_decision:cross_function_supplier_suspension_effect",
+        "unauthorized_decision:supplier_compliance_restriction_effect",
+        "unauthorized_decision:supplier_procurement_suspension_effect"
+      ],
+      "composition_only_findings": [
+        "unapproved_process:aggregate_related_commitment_over_90000",
+        "unapproved_process:cross_function_supplier_suspension_effect",
+        "unapproved_process:supplier_compliance_restriction_effect",
+        "unapproved_process:supplier_procurement_suspension_effect",
+        "unauthorized_decision:aggregate_related_commitment_over_90000",
+        "unauthorized_decision:cross_function_supplier_suspension_effect",
+        "unauthorized_decision:supplier_compliance_restriction_effect",
+        "unauthorized_decision:supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "condition": "C3_connected_process_approved_only",
+      "active_bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D",
+          "Y",
+          "F"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "Y",
+          "F"
+        ],
+        [
+          "J",
+          "K",
+          "L",
+          "M"
+        ]
+      ],
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unapproved_process_decisions": [],
+      "sod_failures": [],
+      "global_findings": [
+        "unauthorized_decision:aggregate_related_commitment_over_90000",
+        "unauthorized_decision:cross_function_supplier_suspension_effect",
+        "unauthorized_decision:supplier_compliance_restriction_effect",
+        "unauthorized_decision:supplier_procurement_suspension_effect"
+      ],
+      "composition_only_findings": [
+        "unauthorized_decision:aggregate_related_commitment_over_90000",
+        "unauthorized_decision:cross_function_supplier_suspension_effect",
+        "unauthorized_decision:supplier_compliance_restriction_effect",
+        "unauthorized_decision:supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "condition": "C4_connected_authority_only",
+      "active_bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D",
+          "Y",
+          "F"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "Y",
+          "F"
+        ],
+        [
+          "J",
+          "K",
+          "L",
+          "M"
+        ]
+      ],
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [],
+      "unapproved_process_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "sod_failures": [],
+      "global_findings": [
+        "unapproved_process:aggregate_related_commitment_over_90000",
+        "unapproved_process:cross_function_supplier_suspension_effect",
+        "unapproved_process:supplier_compliance_restriction_effect",
+        "unapproved_process:supplier_procurement_suspension_effect"
+      ],
+      "composition_only_findings": [
+        "unapproved_process:aggregate_related_commitment_over_90000",
+        "unapproved_process:cross_function_supplier_suspension_effect",
+        "unapproved_process:supplier_compliance_restriction_effect",
+        "unapproved_process:supplier_procurement_suspension_effect"
+      ],
+      "uca": false
+    },
+    {
+      "condition": "C5_governed_connected",
+      "active_bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "local_authorization_ok": true,
+      "owner_scope_ok": true,
+      "exact_owner_scope": true,
+      "component_audit_findings": [],
+      "emergent_paths": [
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "X",
+          "D",
+          "Y",
+          "F"
+        ],
+        [
+          "A",
+          "B",
+          "C",
+          "Y",
+          "F"
+        ],
+        [
+          "J",
+          "K",
+          "L",
+          "M"
+        ]
+      ],
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [],
+      "unapproved_process_decisions": [],
+      "sod_failures": [],
+      "global_findings": [],
+      "composition_only_findings": [],
+      "uca": false
+    }
+  ]
+}
