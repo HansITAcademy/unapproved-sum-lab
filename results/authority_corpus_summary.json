@@ -1,0 +1,142 @@
+{
+  "summary": {
+    "records": 45,
+    "sources": 18,
+    "organizations": 11,
+    "domains": 11,
+    "patterns": {
+      "approval_prerequisite": 1,
+      "bounded_delegation": 10,
+      "joint_approval": 1,
+      "multi_role_chain": 2,
+      "nonredelegable_grant": 4,
+      "proposal_decision_split": 8,
+      "reserved_role": 12,
+      "review_override": 1,
+      "threshold_escalation": 6
+    },
+    "records_by_domain": {
+      "benefits adjudication": 3,
+      "civil enforcement litigation": 4,
+      "civilian human resources": 7,
+      "civilian procurement": 10,
+      "federal civilian human resources": 8,
+      "federal payment operations": 2,
+      "food regulation": 2,
+      "internal policy governance": 2,
+      "professional responsibility": 2,
+      "regulatory policy": 2,
+      "securities enforcement": 3
+    },
+    "records_by_organization": {
+      "Federal Acquisition Regulation": 8,
+      "Internal Revenue Service": 7,
+      "Social Security Administration": 3,
+      "U.S. Department of Education": 2,
+      "U.S. Department of Justice": 8,
+      "U.S. Department of the Treasury \u2014 Bureau of the Fiscal Service": 2,
+      "U.S. Equal Employment Opportunity Commission": 4,
+      "U.S. Food and Drug Administration": 3,
+      "U.S. Food and Drug Administration / HHS": 3,
+      "U.S. Office of Personnel Management": 2,
+      "U.S. Securities and Exchange Commission": 3
+    },
+    "records_by_source": {
+      "SRC-001": 2,
+      "SRC-002": 3,
+      "SRC-003": 3,
+      "SRC-004": 2,
+      "SRC-005": 2,
+      "SRC-006": 6,
+      "SRC-007": 2,
+      "SRC-008": 4,
+      "SRC-009": 2,
+      "SRC-010": 1,
+      "SRC-011": 2,
+      "SRC-012": 2,
+      "SRC-013": 2,
+      "SRC-014": 2,
+      "SRC-015": 5,
+      "SRC-016": 2,
+      "SRC-017": 1,
+      "SRC-018": 2
+    },
+    "max_organization_share": 0.1778,
+    "max_source_share": 0.1333,
+    "joint_or_multi_role_records": 3,
+    "proposal_decision_split_records": 8,
+    "threshold_escalation_records": 6,
+    "reserved_role_records": 12,
+    "nonredelegable_records": 4
+  },
+  "pattern_organizations": {
+    "approval_prerequisite": [
+      "Federal Acquisition Regulation"
+    ],
+    "bounded_delegation": [
+      "Federal Acquisition Regulation",
+      "Internal Revenue Service",
+      "Social Security Administration",
+      "U.S. Department of Justice",
+      "U.S. Equal Employment Opportunity Commission",
+      "U.S. Food and Drug Administration",
+      "U.S. Food and Drug Administration / HHS"
+    ],
+    "joint_approval": [
+      "Internal Revenue Service"
+    ],
+    "multi_role_chain": [
+      "U.S. Department of the Treasury \u2014 Bureau of the Fiscal Service"
+    ],
+    "nonredelegable_grant": [
+      "Federal Acquisition Regulation",
+      "Internal Revenue Service",
+      "U.S. Department of Justice",
+      "U.S. Food and Drug Administration"
+    ],
+    "proposal_decision_split": [
+      "Internal Revenue Service",
+      "Social Security Administration",
+      "U.S. Department of Education",
+      "U.S. Department of Justice",
+      "U.S. Equal Employment Opportunity Commission",
+      "U.S. Office of Personnel Management",
+      "U.S. Securities and Exchange Commission"
+    ],
+    "reserved_role": [
+      "Federal Acquisition Regulation",
+      "U.S. Department of Education",
+      "U.S. Department of Justice",
+      "U.S. Equal Employment Opportunity Commission",
+      "U.S. Food and Drug Administration / HHS",
+      "U.S. Office of Personnel Management",
+      "U.S. Securities and Exchange Commission"
+    ],
+    "review_override": [
+      "Social Security Administration"
+    ],
+    "threshold_escalation": [
+      "Federal Acquisition Regulation",
+      "Internal Revenue Service",
+      "U.S. Department of Justice"
+    ]
+  },
+  "checks": {
+    "corpus_validation": true,
+    "at_least_40_records": true,
+    "at_least_15_sources": true,
+    "at_least_8_organizations": true,
+    "at_least_8_domains": true,
+    "all_sources_official_primary": true,
+    "no_defense_or_military_sources": true,
+    "core_patterns_present": true,
+    "proposal_decision_split_multi_org": true,
+    "threshold_escalation_multi_org": true,
+    "reserved_role_multi_org": true,
+    "joint_or_multi_role_evidence_present": true,
+    "no_single_source_dominates": true,
+    "no_single_organization_dominates": true
+  },
+  "validation_errors": [],
+  "interpretation": "The corpus demonstrates the existence of policy-relative authority structures in civilian institutions. It is not a prevalence estimate of UCA."
+}
