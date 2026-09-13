@@ -1,0 +1,23 @@
+# Python environments and generated files
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Raw model/provider output stays local
+runtime/*
+!runtime/.gitkeep
