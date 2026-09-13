@@ -1,0 +1,309 @@
+{
+  "version": "1.0",
+  "status": "pre-confirmatory corpus-grounded deterministic cases",
+  "global_note": "Each case abstracts an authority topology documented in the frozen civilian corpus. The source documents establish the authority structure, not the synthetic agentic workflow. No claim is made that the cited institution deploys or experiences the modeled agentic composition.",
+  "cases": [
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "title": "Proposal authority does not compile into final decision authority",
+      "authority_pattern": "proposal_decision_split",
+      "grounded_patterns": ["proposal_decision_split", "reserved_role"],
+      "source_record_ids": ["CIV-011", "CIV-012"],
+      "grounding_note": "OPM distinguishes the management official with delegated authority to propose an adverse action from the designated deciding official who makes the final decision.",
+      "abstraction_disclaimer": "The workflow is synthetic. It uses the documented proposal/final-decision split as the authority topology and does not model an actual OPM operational system.",
+      "workflow_id": "cg01_adverse_action_processing",
+      "baseline_delegated_decisions": ["proposal_processing"],
+      "baseline_approval_evidence": ["proposing_official"],
+      "required_approval_paths": [["deciding_official"]],
+      "delegations": [
+        {
+          "agent_id": "proposal_agent",
+          "owner_id": "proposal_owner",
+          "owner_role": "proposing_official",
+          "owner_allowed_actions": ["issue_proposal_notice"]
+        },
+        {
+          "agent_id": "interim_ops_agent",
+          "owner_id": "interim_ops_owner",
+          "owner_role": "interim_operations_manager",
+          "owner_allowed_actions": ["apply_interim_restriction"]
+        },
+        {
+          "agent_id": "records_agent",
+          "owner_id": "records_owner",
+          "owner_role": "personnel_records_administrator",
+          "owner_allowed_actions": ["write_effective_status_record"]
+        }
+      ],
+      "events": [
+        {
+          "event_id": "proposal_notice",
+          "agent_id": "proposal_agent",
+          "action": "issue_proposal_notice",
+          "domain": "civilian_hr",
+          "consumes": ["fact:case_ready"],
+          "produces": ["state:proposal_issued"]
+        },
+        {
+          "event_id": "interim_restriction",
+          "agent_id": "interim_ops_agent",
+          "action": "apply_interim_restriction",
+          "domain": "civilian_hr_operations",
+          "consumes": ["state:proposal_issued"],
+          "produces": ["state:interim_restriction_active"]
+        },
+        {
+          "event_id": "status_record",
+          "agent_id": "records_agent",
+          "action": "write_effective_status_record",
+          "domain": "civilian_hr_records",
+          "consumes": ["state:interim_restriction_active"],
+          "produces": ["state:effective_adverse_status"]
+        }
+      ],
+      "decision_rule": {
+        "decision_id": "final_adverse_action_effect",
+        "description": "The combined state has moved from proposal through interim restriction into an effective adverse status. The authority topology reserves the final adverse-action decision to a deciding official.",
+        "required_state": [
+          "state:proposal_issued",
+          "state:interim_restriction_active",
+          "state:effective_adverse_status"
+        ]
+      },
+      "full_workflow_edges": [
+        ["proposal_notice", "interim_restriction"],
+        ["interim_restriction", "status_record"]
+      ],
+      "partial_workflow_edges": [["proposal_notice", "interim_restriction"]]
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "title": "Sub-threshold local approvals can compile into an above-threshold decision",
+      "authority_pattern": "threshold_escalation",
+      "grounded_patterns": ["threshold_escalation"],
+      "source_record_ids": ["CIV-006"],
+      "grounding_note": "FAR 50.102-1(b) reserves approval of requests to obligate the Government above $90,000 to secretarial level or above.",
+      "abstraction_disclaimer": "The workflow is a synthetic decomposition of one aggregate institutional obligation into locally processed components. The source establishes the threshold authority structure, not this synthetic decomposition.",
+      "workflow_id": "cg02_aggregate_obligation_processing",
+      "baseline_delegated_decisions": ["component_obligation_processing"],
+      "baseline_approval_evidence": ["delegated_agency_official"],
+      "required_approval_paths": [["secretarial_level"]],
+      "delegations": [
+        {
+          "agent_id": "component_a_agent",
+          "owner_id": "component_a_owner",
+          "owner_role": "delegated_agency_official",
+          "owner_allowed_actions": ["approve_component_under_90000"]
+        },
+        {
+          "agent_id": "component_b_agent",
+          "owner_id": "component_b_owner",
+          "owner_role": "delegated_agency_official",
+          "owner_allowed_actions": ["approve_component_under_90000"]
+        }
+      ],
+      "events": [
+        {
+          "event_id": "component_a",
+          "agent_id": "component_a_agent",
+          "action": "approve_component_under_90000",
+          "domain": "civilian_procurement",
+          "consumes": ["fact:aggregate_request_open"],
+          "produces": ["state:component_a_approved"],
+          "quantitative_effects": [{"key": "obligation_usd", "value": 50000}]
+        },
+        {
+          "event_id": "component_b",
+          "agent_id": "component_b_agent",
+          "action": "approve_component_under_90000",
+          "domain": "civilian_procurement",
+          "consumes": ["state:component_a_approved"],
+          "produces": ["state:component_b_approved"],
+          "quantitative_effects": [{"key": "obligation_usd", "value": 50000}]
+        }
+      ],
+      "decision_rule": {
+        "decision_id": "aggregate_obligation_over_90000_effect",
+        "description": "The composed workflow has approved components whose aggregate institutional obligation exceeds $90,000, crossing the authority threshold represented by the source policy.",
+        "required_state": ["state:component_a_approved", "state:component_b_approved"],
+        "minimum_totals": [{"key": "obligation_usd", "minimum": 90001}]
+      },
+      "full_workflow_edges": [["component_a", "component_b"]],
+      "partial_workflow_edges": []
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "title": "Locally authorized administration does not compile into a reserved contract decision",
+      "authority_pattern": "reserved_role",
+      "grounded_patterns": ["reserved_role", "nonredelegable_grant"],
+      "source_record_ids": ["CIV-004", "CIV-005"],
+      "grounding_note": "The FAR states that a COR may perform delegated monitoring/administration but has no authority to make commitments or changes affecting contract price, quality, quantity, delivery, or other terms, and the COR's delegated authority is not redelegable.",
+      "abstraction_disclaimer": "The workflow is synthetic. It abstracts the documented reserved contract-change authority and does not claim the listed local administrative actions are an actual FAR workflow.",
+      "workflow_id": "cg03_contract_administration",
+      "baseline_delegated_decisions": ["technical_contract_administration"],
+      "baseline_approval_evidence": ["cor_designation"],
+      "required_approval_paths": [["contracting_officer"]],
+      "delegations": [
+        {
+          "agent_id": "inspection_agent",
+          "owner_id": "inspection_owner",
+          "owner_role": "technical_monitor",
+          "owner_allowed_actions": ["record_performance_variance"]
+        },
+        {
+          "agent_id": "acceptance_agent",
+          "owner_id": "acceptance_owner",
+          "owner_role": "acceptance_administrator",
+          "owner_allowed_actions": ["record_acceptance_recommendation"]
+        },
+        {
+          "agent_id": "schedule_agent",
+          "owner_id": "schedule_owner",
+          "owner_role": "delivery_administrator",
+          "owner_allowed_actions": ["apply_operational_delivery_change"]
+        }
+      ],
+      "events": [
+        {
+          "event_id": "performance_variance",
+          "agent_id": "inspection_agent",
+          "action": "record_performance_variance",
+          "domain": "contract_monitoring",
+          "consumes": ["fact:performance_variance"],
+          "produces": ["state:variance_recorded"]
+        },
+        {
+          "event_id": "acceptance_recommendation",
+          "agent_id": "acceptance_agent",
+          "action": "record_acceptance_recommendation",
+          "domain": "contract_acceptance",
+          "consumes": ["state:variance_recorded"],
+          "produces": ["state:acceptance_condition_changed"]
+        },
+        {
+          "event_id": "delivery_change",
+          "agent_id": "schedule_agent",
+          "action": "apply_operational_delivery_change",
+          "domain": "contract_delivery",
+          "consumes": ["state:acceptance_condition_changed"],
+          "produces": ["state:delivery_condition_changed"]
+        }
+      ],
+      "decision_rule": {
+        "decision_id": "contract_terms_change_effect",
+        "description": "The combined state changes acceptance and delivery conditions in a way the experimental policy treats as the functional equivalent of changing contract terms, a decision reserved to the contracting officer in the grounded authority topology.",
+        "required_state": [
+          "state:variance_recorded",
+          "state:acceptance_condition_changed",
+          "state:delivery_condition_changed"
+        ]
+      },
+      "full_workflow_edges": [
+        ["performance_variance", "acceptance_recommendation"],
+        ["acceptance_recommendation", "delivery_change"]
+      ],
+      "partial_workflow_edges": [["performance_variance", "acceptance_recommendation"]]
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "title": "Several valid approvals do not compile into the missing final approval",
+      "authority_pattern": "joint_approval",
+      "grounded_patterns": ["joint_approval"],
+      "source_record_ids": ["CIV-036"],
+      "grounding_note": "IRS Delegation Order 6-22 states that an individual monetary award above $25,000 and up to $50,000 requires approval by the Chief Operating Officer, Treasury, OPM, and final approval by the President, and is not redelegable.",
+      "abstraction_disclaimer": "The workflow is synthetic. The source establishes a multi-institution approval bundle; the modeled automated payment release is an experimental composition, not a claim about IRS systems.",
+      "workflow_id": "cg04_high_value_award_processing",
+      "baseline_delegated_decisions": ["award_processing"],
+      "baseline_approval_evidence": [
+        "chief_operating_officer",
+        "department_of_treasury",
+        "opm"
+      ],
+      "required_approval_paths": [[
+        "chief_operating_officer",
+        "department_of_treasury",
+        "opm",
+        "president"
+      ]],
+      "delegations": [
+        {
+          "agent_id": "coo_agent",
+          "owner_id": "coo_owner",
+          "owner_role": "chief_operating_officer",
+          "owner_allowed_actions": ["record_coo_approval"]
+        },
+        {
+          "agent_id": "treasury_agent",
+          "owner_id": "treasury_owner",
+          "owner_role": "department_of_treasury",
+          "owner_allowed_actions": ["record_treasury_approval"]
+        },
+        {
+          "agent_id": "opm_agent",
+          "owner_id": "opm_owner",
+          "owner_role": "opm",
+          "owner_allowed_actions": ["record_opm_approval"]
+        },
+        {
+          "agent_id": "payment_agent",
+          "owner_id": "payment_owner",
+          "owner_role": "payment_operations",
+          "owner_allowed_actions": ["release_award_payment"]
+        }
+      ],
+      "events": [
+        {
+          "event_id": "coo_approval",
+          "agent_id": "coo_agent",
+          "action": "record_coo_approval",
+          "domain": "civilian_hr_awards",
+          "consumes": ["fact:award_package_ready"],
+          "produces": ["state:coo_approved"]
+        },
+        {
+          "event_id": "treasury_approval",
+          "agent_id": "treasury_agent",
+          "action": "record_treasury_approval",
+          "domain": "civilian_hr_awards",
+          "consumes": ["state:coo_approved"],
+          "produces": ["state:treasury_approved"]
+        },
+        {
+          "event_id": "opm_approval",
+          "agent_id": "opm_agent",
+          "action": "record_opm_approval",
+          "domain": "civilian_hr_awards",
+          "consumes": ["state:treasury_approved"],
+          "produces": ["state:opm_approved"]
+        },
+        {
+          "event_id": "award_payment",
+          "agent_id": "payment_agent",
+          "action": "release_award_payment",
+          "domain": "payment_operations",
+          "consumes": ["state:opm_approved"],
+          "produces": ["state:award_released"]
+        }
+      ],
+      "decision_rule": {
+        "decision_id": "high_value_award_effect",
+        "description": "The award has been released after three documented approvals but without the final required approval in the grounded multi-authority structure.",
+        "required_state": [
+          "state:coo_approved",
+          "state:treasury_approved",
+          "state:opm_approved",
+          "state:award_released"
+        ]
+      },
+      "full_workflow_edges": [
+        ["coo_approval", "treasury_approval"],
+        ["treasury_approval", "opm_approval"],
+        ["opm_approval", "award_payment"]
+      ],
+      "partial_workflow_edges": [
+        ["coo_approval", "treasury_approval"],
+        ["treasury_approval", "opm_approval"]
+      ]
+    }
+  ]
+}

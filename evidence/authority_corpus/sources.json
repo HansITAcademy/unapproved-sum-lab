@@ -1,0 +1,164 @@
+[
+  {
+    "source_id": "SRC-001",
+    "publisher": "Federal Acquisition Regulation / Acquisition.gov",
+    "title": "FAR 1.602-1 Authority",
+    "url": "https://www.acquisition.gov/far/1.602-1",
+    "source_date_or_version": "FAC 2026-01; effective 2026-03-13",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-002",
+    "publisher": "Federal Acquisition Regulation / Acquisition.gov",
+    "title": "FAR 1.602-2 Responsibilities",
+    "url": "https://www.acquisition.gov/far/1.602-2",
+    "source_date_or_version": "FAC 2026-01; effective 2026-03-13",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-003",
+    "publisher": "Federal Acquisition Regulation / Acquisition.gov",
+    "title": "FAR 50.102-1 Delegation of authority",
+    "url": "https://www.acquisition.gov/far/50.102-1",
+    "source_date_or_version": "FAC 2026-01; effective 2026-03-13",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-004",
+    "publisher": "U.S. Department of Education / Acquisition.gov",
+    "title": "EDAR 3452.201-70 Contracting Officer's Representative",
+    "url": "https://www.acquisition.gov/edar/3452.201-70-contracting-officers-representative-cor.",
+    "source_date_or_version": "Current clause page; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-005",
+    "publisher": "U.S. Office of Personnel Management",
+    "title": "Employee Relations Reference Materials \u2014 Glossary of Terms and Concepts",
+    "url": "https://www.opm.gov/policy-data-oversight/employee-relations/reference-materials/",
+    "source_date_or_version": "Current OPM reference page; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-006",
+    "publisher": "U.S. Department of Justice",
+    "title": "Human Resources Order DOJ 1200.1 \u2014 Appendix 2",
+    "url": "https://www.justice.gov/jmd/hr-order-doj/human-resources-order-department-justice-12001-appendix-2",
+    "source_date_or_version": "Official DOJ HR delegation table; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-007",
+    "publisher": "U.S. Department of Justice \u2014 Office of Professional Responsibility",
+    "title": "Office of Professional Responsibility Frequently Asked Questions",
+    "url": "https://www.justice.gov/opr/frequently-asked-questions",
+    "source_date_or_version": "Current page; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-008",
+    "publisher": "U.S. Equal Employment Opportunity Commission",
+    "title": "Standards and Procedures for Settlement of EEOC Litigation",
+    "url": "https://www.eeoc.gov/node/135452",
+    "source_date_or_version": "Current EEOC litigation settlement procedures; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-009",
+    "publisher": "U.S. Securities and Exchange Commission",
+    "title": "Division of Enforcement Manual",
+    "url": "https://www.sec.gov/divisions/enforce/enforcementmanual.pdf",
+    "source_date_or_version": "Current manual available in 2026; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-010",
+    "publisher": "U.S. Securities and Exchange Commission",
+    "title": "Delegation of Authority to Director of the Division of Enforcement",
+    "url": "https://www.sec.gov/rules-regulations/2025/03/33-11366",
+    "source_date_or_version": "Effective 2025-03-14",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-011",
+    "publisher": "U.S. Food and Drug Administration",
+    "title": "FDA Staff Manual Guide 1410.10",
+    "url": "https://www.fda.gov/media/81983/download",
+    "source_date_or_version": "SMG 1410.10; effective 2023-02-22",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-012",
+    "publisher": "U.S. Food and Drug Administration",
+    "title": "FDA Staff Manual Guide 1410.304",
+    "url": "https://www.fda.gov/media/81743/download",
+    "source_date_or_version": "SMG 1410.304; effective 2001-04-02; listed by FDA as current public SMG",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-013",
+    "publisher": "U.S. Food and Drug Administration",
+    "title": "FDA Staff Manual Guide 1431.8 \u2014 Appointing Authority",
+    "url": "https://www.fda.gov/media/81716/download",
+    "source_date_or_version": "SMG 1431.8; effective 2004-11-12; listed by FDA as current public SMG",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-014",
+    "publisher": "Internal Revenue Service",
+    "title": "IRM 1.11.4 Servicewide Delegation Order Process",
+    "url": "https://www.irs.gov/irm/part1/irm_01-011-004",
+    "source_date_or_version": "Effective 2025-02-04",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-015",
+    "publisher": "Internal Revenue Service",
+    "title": "IRM 1.2.2 Servicewide Delegations of Authority",
+    "url": "https://www.irs.gov/irm/part1/irm_01-002-002",
+    "source_date_or_version": "Current IRM page published 2026; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-016",
+    "publisher": "Social Security Administration",
+    "title": "20 CFR 404.953 and 404.955 \u2014 ALJ decision and effect of hearing decision",
+    "url": "https://www.ssa.gov/OP_Home/cfr20/404/404-0953.htm",
+    "source_date_or_version": "Current SSA-hosted CFR text; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-017",
+    "publisher": "Social Security Administration",
+    "title": "HALLEX I-3-9-5 \u2014 Appeals Council jurisdiction to reopen and revise",
+    "url": "https://www.ssa.gov/OP_Home/hallex/I-03/I-3-9-5.html",
+    "source_date_or_version": "HALLEX I-3-9-5; current page accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  },
+  {
+    "source_id": "SRC-018",
+    "publisher": "U.S. Department of the Treasury \u2014 Bureau of the Fiscal Service",
+    "title": "Certifying Officer Training / Federal payment certification process",
+    "url": "https://fiscal.treasury.gov/about-us/training-events/certifying-officer-training",
+    "source_date_or_version": "Current training page; accessed 2026-09-11",
+    "accessed": "2026-09-11",
+    "official_primary_source": true
+  }
+]

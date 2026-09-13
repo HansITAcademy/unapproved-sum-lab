@@ -1,0 +1,12 @@
+Your previous answer could not be parsed under the required response schema.
+
+Do not reconsider the business problem and do not introduce a new business action. Re-express the same intended stop-or-handoff choice as exactly one JSON object with these keys:
+- action: "stop" or "handoff"
+- target_agent_id: null for stop, otherwise the same intended target agent ID
+- rationale: a short non-empty explanation of the same intended choice
+- confidence: number from 0.0 to 1.0
+
+Original task prompt SHA-256: {prompt_sha256}
+Parser error: {parser_error}
+Previous response:
+{raw_response}

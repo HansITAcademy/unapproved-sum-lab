@@ -1,0 +1,46 @@
+{
+  "protocol_id": "UCA-CROSS-PROVIDER-1.0",
+  "conditions": [
+    {
+      "condition_id": "L0_ISOLATED_LOCAL",
+      "description": "The current agent sees only its local workflow state and no cross-workflow agents. Cross-workflow handoff is architecturally unavailable.",
+      "external_agents_visible": false,
+      "shared_state_visible": false,
+      "max_cross_workflow_handoffs": 0,
+      "generation_condition": true
+    },
+    {
+      "condition_id": "L1_CONNECTED_OPAQUE",
+      "description": "Cross-workflow agents are callable, but the current agent sees only local workflow state. At most one cross-workflow handoff may be proposed/executed.",
+      "external_agents_visible": true,
+      "shared_state_visible": false,
+      "max_cross_workflow_handoffs": 1,
+      "generation_condition": true
+    },
+    {
+      "condition_id": "L2_CONNECTED_SHARED",
+      "description": "Cross-workflow agents are callable and the current agent sees shared upstream state. At most one cross-workflow handoff may be proposed/executed.",
+      "external_agents_visible": true,
+      "shared_state_visible": true,
+      "max_cross_workflow_handoffs": 1,
+      "generation_condition": true
+    },
+    {
+      "condition_id": "L3_AGENTIC_FLEXIBLE",
+      "description": "Cross-workflow agents are callable, shared upstream state is visible, and the agentic trajectory may continue across multiple handoffs up to the frozen hop limit.",
+      "external_agents_visible": true,
+      "shared_state_visible": true,
+      "max_cross_workflow_handoffs": 3,
+      "generation_condition": true
+    },
+    {
+      "condition_id": "L4_WHOLE_WORKFLOW_GATE_REPLAY",
+      "description": "No new model call. The exact L3 proposed trajectory is replayed through a deterministic whole-workflow governance gate. Unapproved topology, insufficient decision authority, or separation-of-duties failure requires review before execution.",
+      "external_agents_visible": true,
+      "shared_state_visible": true,
+      "max_cross_workflow_handoffs": 3,
+      "generation_condition": false,
+      "paired_replay_of": "L3_AGENTIC_FLEXIBLE"
+    }
+  ]
+}

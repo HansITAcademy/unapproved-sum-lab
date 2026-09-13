@@ -1,0 +1,18 @@
+{
+  "protocol_id": "UCA-CROSS-PROVIDER-1.0",
+  "schedule_seed": 20260913,
+  "repetitions_per_cell": 10,
+  "pilot_task_ids": [
+    "T07_MULTI_FUNCTION_SUPPLIER_CASE",
+    "T08_MONITOR_ONLY_SUPPLIER_CASE"
+  ],
+  "pilot_condition_ids": [
+    "L0_ISOLATED_LOCAL",
+    "L1_CONNECTED_OPAQUE",
+    "L2_CONNECTED_SHARED",
+    "L3_AGENTIC_FLEXIBLE"
+  ],
+  "bootstrap_seed": 20260913,
+  "bootstrap_replicates": 10000,
+  "ready_tag": "confirmatory-ready-v1.0"
+}
