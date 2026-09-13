@@ -1,0 +1,180 @@
+{
+  "runs": [
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "condition": "unapproved_process_insufficient_authority",
+      "unapproved_composition": true,
+      "uca": true,
+      "compiled_decisions": [
+        "final_adverse_action_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "final_adverse_action_effect"
+      ]
+    },
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "condition": "approved_process_insufficient_authority",
+      "unapproved_composition": false,
+      "uca": true,
+      "compiled_decisions": [
+        "final_adverse_action_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "final_adverse_action_effect"
+      ]
+    },
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "condition": "unapproved_process_sufficient_authority",
+      "unapproved_composition": true,
+      "uca": false,
+      "compiled_decisions": [
+        "final_adverse_action_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "condition": "approved_process_sufficient_authority",
+      "unapproved_composition": false,
+      "uca": false,
+      "compiled_decisions": [
+        "final_adverse_action_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "condition": "unapproved_process_insufficient_authority",
+      "unapproved_composition": true,
+      "uca": true,
+      "compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ]
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "condition": "approved_process_insufficient_authority",
+      "unapproved_composition": false,
+      "uca": true,
+      "compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ]
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "condition": "unapproved_process_sufficient_authority",
+      "unapproved_composition": true,
+      "uca": false,
+      "compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "condition": "approved_process_sufficient_authority",
+      "unapproved_composition": false,
+      "uca": false,
+      "compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "condition": "unapproved_process_insufficient_authority",
+      "unapproved_composition": true,
+      "uca": true,
+      "compiled_decisions": [
+        "contract_terms_change_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "contract_terms_change_effect"
+      ]
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "condition": "approved_process_insufficient_authority",
+      "unapproved_composition": false,
+      "uca": true,
+      "compiled_decisions": [
+        "contract_terms_change_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "contract_terms_change_effect"
+      ]
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "condition": "unapproved_process_sufficient_authority",
+      "unapproved_composition": true,
+      "uca": false,
+      "compiled_decisions": [
+        "contract_terms_change_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "condition": "approved_process_sufficient_authority",
+      "unapproved_composition": false,
+      "uca": false,
+      "compiled_decisions": [
+        "contract_terms_change_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "condition": "unapproved_process_insufficient_authority",
+      "unapproved_composition": true,
+      "uca": true,
+      "compiled_decisions": [
+        "high_value_award_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "high_value_award_effect"
+      ]
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "condition": "approved_process_insufficient_authority",
+      "unapproved_composition": false,
+      "uca": true,
+      "compiled_decisions": [
+        "high_value_award_effect"
+      ],
+      "unauthorized_compiled_decisions": [
+        "high_value_award_effect"
+      ]
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "condition": "unapproved_process_sufficient_authority",
+      "unapproved_composition": true,
+      "uca": false,
+      "compiled_decisions": [
+        "high_value_award_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "condition": "approved_process_sufficient_authority",
+      "unapproved_composition": false,
+      "uca": false,
+      "compiled_decisions": [
+        "high_value_award_effect"
+      ],
+      "unauthorized_compiled_decisions": []
+    }
+  ]
+}
