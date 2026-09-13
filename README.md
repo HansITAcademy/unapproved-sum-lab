@@ -1,41 +1,81 @@
-# Unapproved Sum Lab
+Unapproved Sum Lab
 
-This is the clean computational lab for my **Unapproved Sum / Compiled Authority** research. I rebuilt it from the publication study so the experiment can be run from a fresh repository without carrying over old branches, draft folders, reading notes, or historical artifacts.
+Publication package date: 1 October 2026
 
-The question is simple even if the implementation is not: **can individually authorized agent actions compose into an institutional decision that the workflow itself was never authorized to make?**
+This repository contains the clean computational lab for The Unapproved Sum / Compiled Authority research. It was rebuilt from the publication study so the experiment can be reproduced from a fresh repository without carrying forward draft branches, reading notes, slide decks, or historical working files.
 
-The lab keeps three checks separate:
+The central question is:
 
-> local action authorization != workflow/process approval != institutional decision-right
+Can individually authorized agent actions compose into an institutional decision that the workflow itself was never authorized to make?
 
-That distinction matters throughout the code. A run is not classified as Unapproved Compiled Authority (UCA) just because an agent hands work to another agent. The connected path has to instantiate a policy-defined institutional decision, while the local actions remain authorized and the workflow lacks the decision-right or approval bundle required for that decision.
+The lab keeps three governance objects separate:
 
-## What is in this repository
+local action authorization != workflow/process approval != institutional decision-right
 
-Only the lab. No literature-review folder, manuscript drafts, novelty matrix, slide deck, or old branch history.
+That distinction is the core of the study. A run is not classified as Unapproved Compiled Authority (UCA) merely because one agent hands work to another. UCA requires all of the following: the constituent actions remain locally authorized; the agents remain within the operative scope of their human or organizational owners; the connected causal path instantiates a policy-defined institutional decision; and the workflow lacks the decision-right or approval bundle required for that decision.
 
-The deterministic side reproduces the Policy Box and causal-composition tests. The probabilistic side uses the same eight business tasks and the same four generation conditions across model providers.
+Publication snapshot
 
-For the live confirmatory study I am keeping the original OpenAI experiment intact as a replication subset:
+The deterministic study tests the Policy Box, whole-workflow Authority Gate, process-approval controls, decision-right controls, bridge-subset ablations, and separation-of-duties cases.
 
-- GPT-5.6 Sol
-- GPT-5.6 Terra
-- GPT-5.6 Luna
+The confirmatory study uses five model slots across three providers:
 
-That is still **3 models x 8 tasks x 4 generation conditions x 10 repetitions = 960 trajectories**.
+GPT-5.6 Sol
 
-I then add a cross-provider extension using:
+GPT-5.6 Terra
 
-- Claude Opus 5
-- Gemini 3.8 Flash
+GPT-5.6 Luna
 
-With those two additions, the full run is **5 models x 8 tasks x 4 conditions x 10 repetitions = 1,600 trajectories**. The Claude/Gemini extension uses the exact same task files, condition files, prompt template, decision rules, and deterministic evaluator. Provider comparisons are descriptive unless they were frozen as an inferential test before collection.
+Claude Opus 5
 
-`L4` is not another model generation. It replays each `L3` trajectory through the whole-workflow Authority Gate.
+Gemini 3.8 Flash
 
-## Repository layout
+The three OpenAI models form the 960-trajectory replication subset:
 
-```text
+3 models x 8 tasks x 4 generation conditions x 10 repetitions = 960 trajectories
+
+Claude and Gemini add a 640-trajectory cross-provider extension:
+
+2 models x 8 tasks x 4 generation conditions x 10 repetitions = 640 trajectories
+
+The full frozen confirmatory schedule is therefore:
+
+5 models x 8 tasks x 4 generation conditions x 10 repetitions = 1,600 scheduled trajectories
+
+Of those 1,600 scheduled trajectories, 1,584 completed. Sixteen Claude Opus 5 T05 trajectories were preserved as terminal technical failures rather than replaced.
+
+Key publication results are preserved under results/:
+
+L0 completed: 400; executed bridges: 0; UCA: 0
+
+L1 completed: 399; executed bridges: 207 (51.9%); UCA: 157
+
+L2 completed: 393; executed bridges: 208 (52.9%); UCA: 158
+
+L3 completed: 392; executed bridges: 206 (52.6%); UCA: 156
+
+Connected total, L1-L3: 621 executed bridges and 471 UCA classifications
+
+All 471/471 UCA classifications preserve the study's local-authorization and owner-scope conditions
+
+T03 bridges in 150/150 connected completed trajectories and produces 0 UCA events, demonstrating that cross-agent coordination is not itself classified as an authority violation
+
+H1 is retained as a negative result: the L3-minus-L1 executed-bridge difference is approximately +0.67 percentage points and does not support the pre-specified prediction that added flexibility increases bridge formation
+
+H5 is supported: L3 opportunity tasks bridge in 189/192 completed trajectories (98.4%) versus 17/200 (8.5%) for placebo tasks
+
+The extreme-case missing-data sensitivity analysis leaves the H5 difference strongly positive
+
+L4 is a deterministic paired replay rather than a new model generation; all 156/156 L3 trajectories meeting the pre-specified review criterion are routed to review
+
+Nine live multi-hop trajectories appear in L3, all from Gemini 3.8 Flash
+
+No live separation-of-duties failure appears in the confirmatory sample; that mechanism remains demonstrated in the deterministic controls
+
+These rates are experimental results from the frozen task set. They are not prevalence estimates for real organizations.
+
+Repository layout
+
 config/                 model registry and experiment settings
 scenarios/              frozen tasks, conditions, prompts, and Policy Box
 evidence/authority_corpus/
@@ -43,50 +83,64 @@ evidence/authority_corpus/
 src/unapproved_sum/     experiment engine and provider adapters
 experiments/            scripts to run in numerical order
 tests/                  automated checks
-results/                generated deterministic and redacted result artifacts
+results/                deterministic and publication-safe result artifacts
 runtime/                raw pilot/confirmatory output (ignored by Git)
-docs/                   short methods and run instructions
-```
+docs/                   methods, provider notes, disclosure, and run instructions
 
-## Ground rules for this clean run
+The repository contains the lab, not the manuscript's literature-review working folder, novelty matrix, slide deck, or abandoned draft branches.
 
-I am using **one branch: `main`**. I do not need a development branch, publication branch, or a trail of abandoned experimental branches for this run.
+Frozen protocol and provenance
 
-I use one Git tag, `confirmatory-ready-v1.0`, immediately before evidentiary collection. The tag is not a second branch. It is just a fixed pointer to the exact code and protocol state that produced the confirmatory data.
+The pre-collection protocol is identified by the Git tag:
 
-I also keep raw provider output out of Git. The collector writes it under `runtime/`. After collection, the redaction step produces a publication-safe result file under `results/`.
+confirmatory-ready-v1.0
 
-## Setup
+results/confirmatory_manifest.json is the authoritative machine-readable record that the confirmatory protocol was frozen before evidentiary collection. It records the planned 1,600 trajectories and SHA-256 hashes for the critical configuration, scenario, source, and collection/analysis files.
 
-I use Python 3.12+ and `uv`.
+Important frozen-file note
 
-```bash
+config/models.json contains the historical field:
+
+"status": "DRAFT_UNTIL_PILOT_PASSES"
+
+That label is a stale administrative string inside a frozen, hashed pre-collection input. It is intentionally left unchanged after collection because editing the file would destroy byte-for-byte correspondence with the recorded confirmatory manifest. The authoritative study status is the manifest field:
+
+FROZEN_BEFORE_CONFIRMATORY_COLLECTION
+
+The same principle applies to other frozen inputs: do not silently “clean up” a hashed confirmatory file after observing results. Post-collection clarifications belong in documentation, not in the evidence-generating inputs.
+
+ZIP distributions and Git history
+
+A downloaded ZIP preserves the repository files but does not preserve the .git directory or independently prove when a Git tag was created. The original Git repository, release record, or another immutable timestamped archive should therefore be retained as provenance for confirmatory-ready-v1.0.
+
+The raw append-only runtime ledger is intentionally excluded from the public repository. The publication-safe dataset and summary artifacts preserve outcome variables and cryptographic linkage. For journal archiving, the raw ledger should be retained in restricted immutable storage together with external timestamp evidence for the frozen protocol state.
+
+Setup
+
+The project uses Python 3.12+ and uv.
+
 uv sync --dev
 cp .env.example .env
-```
 
-Put the API keys in your shell or local `.env` file. Do **not** commit the `.env` file.
+Provide API keys through the environment or a local .env file. Do not commit .env.
 
-```text
 OPENAI_API_KEY=...
 ANTHROPIC_API_KEY=...
 GEMINI_API_KEY=...
-```
 
-The code itself reads environment variables. If you use a `.env` file, load it into your shell before running the live steps.
+The code reads environment variables. If a .env file is used, load it into the shell before running live steps.
 
-## Run it in order
+Reproduce the study
 
-### 1. Start with tests
+1. Run the automated checks
 
-```bash
 uv run pytest -q
 uv run python experiments/08_validate_protocol.py
-```
 
-### 2. Reproduce the deterministic lab
+The pre-collection code state used by the study passed 65 automated tests.
 
-```bash
+2. Reproduce the deterministic lab
+
 uv run python experiments/01_authority_corpus.py
 uv run python experiments/02_proof_of_mechanism.py
 uv run python experiments/03_control_specificity.py
@@ -94,114 +148,162 @@ uv run python experiments/04_reproducibility_check.py
 uv run python experiments/05_policy_box_emergence.py
 uv run python experiments/06_bridge_subset_ablation.py
 uv run python experiments/07_visibility_and_sod.py
-```
 
 These scripts do not call a model API.
 
-### 3. Build the frozen randomized schedule and test the plumbing
+3. Build the randomized schedule and test the plumbing
 
-```bash
 uv run python experiments/09_generate_schedule.py
 uv run python experiments/10_dry_run.py
-```
 
-The dry run uses a deterministic mock response. It has zero evidentiary weight.
+The dry run uses deterministic mock output and has no evidentiary weight.
 
-### 4. Check that all five live model adapters actually work
+4. Check all live provider adapters
 
-```bash
 uv run python experiments/11_provider_check.py
-```
 
-This makes a small number of live calls. It is an engineering check and is excluded from the study.
+This is an excluded engineering check used to catch model-ID, SDK, API, schema, or authentication problems before the pilot.
 
-### 5. Run the excluded pilot
+5. Run the excluded pilot
 
-```bash
 uv run python experiments/12_excluded_pilot.py --live
 uv run python experiments/13_validate_pilot.py
-```
 
-The pilot is 40 trajectories: 5 models x 2 tasks x 4 conditions. It exists to catch API, schema, logging, replay, and failure-handling problems before the real collection. It is not included in the confirmatory statistics.
+The pilot contains 40 trajectories:
 
-This is the last point where I allow myself to fix an implementation problem. If the pilot exposes a bug, I fix it, rerun the tests, regenerate the schedule if necessary, and rerun the pilot. I do not silently tune prompts because I dislike a behavioral result.
+5 models x 2 tasks x 4 conditions = 40 excluded trajectories
 
-### 6. Freeze the exact confirmatory implementation
+Its purpose is to test API compatibility, structured output, logging, replay, and failure handling. Pilot results are not included in the confirmatory statistics.
 
-```bash
+The pilot is the final point at which an implementation problem may be fixed before the evidentiary run. Any fix requires rerunning the relevant tests and validation. Behavioral prompts are not tuned merely because a pilot result is inconvenient.
+
+6. Freeze the confirmatory implementation
+
 uv run python experiments/14_freeze_confirmatory.py
-```
 
-Then commit the entire ready state and tag it:
+Then commit and tag the exact ready state:
 
-```bash
 git add .
 git commit -m "Freeze confirmatory protocol"
 git tag confirmatory-ready-v1.0
 git push origin main
 git push origin confirmatory-ready-v1.0
-```
 
-Now run the strict preflight:
+Run the strict preflight:
 
-```bash
 uv run python experiments/15_preflight.py --require-tag
-```
 
-The preflight refuses to proceed if the tree is dirty, the tag does not point to `HEAD`, the pilot validation is missing, the schedule or manifest changed, or one of the required API keys is missing.
+The preflight is designed to reject a dirty tree, an incorrect tag/HEAD relationship, a missing pilot validation, changed schedule/manifest inputs, or missing provider credentials.
 
-### 7. Run the confirmatory collection
+7. Run confirmatory collection
 
-```bash
 uv run python experiments/16_collect.py \
   --live \
   --confirm CONFIRM_EVIDENTIARY_COLLECTION
-```
 
-The collector is append-only. It prints technical progress but does not print bridge/UCA outcomes while collection is still running. A terminal run is never replaced. If the process is interrupted, use:
+Collection is append-only. Successful and terminal trajectories are never replaced. If collection is interrupted:
 
-```bash
 uv run python experiments/16_collect.py \
   --live \
   --resume \
   --confirm CONFIRM_EVIDENTIARY_COLLECTION
-```
 
-A trajectory that had started but did not get a terminal record is marked `interrupted_unknown`; it is not quietly regenerated.
+A trajectory that started but did not receive a terminal ledger record is marked interrupted_unknown rather than silently regenerated.
 
-### 8. Validate first, then redact, then analyze
+8. Validate, redact, and analyze
 
-```bash
 uv run python experiments/17_validate_ledger.py
 uv run python experiments/18_redact.py
 uv run python experiments/19_analyze.py
-```
 
-The analysis produces the overall five-model confirmatory summary **and** a separate `openai_replication_subset` summary, so I can compare the new run directly with the original 960-trajectory design without muddying the replication with the cross-provider extension.
+The analysis produces the full five-model confirmatory summary and a separate openai_replication_subset summary. This keeps the 960-trajectory within-family replication analytically distinguishable from the 640-trajectory cross-provider extension.
 
-## Moving this into the new GitHub repository
+Confirmatory conditions
 
-If this folder was downloaded as a ZIP, I would initialize it like this:
+The live experiment contains four generation conditions and one deterministic paired replay:
 
-```bash
+L0 — Isolated Local: no external agents are available
+
+L1 — Connected Opaque: another function is reachable, with limited shared state and at most one handoff
+
+L2 — Connected Shared: relevant shared state is visible, with at most one handoff
+
+L3 — Agentic Flexible: shared state plus dynamic agent/tool choice, with up to three sequential handoffs
+
+L4 — Whole-Workflow Gate Replay: no new model call; the exact L3 trajectory is replayed through the Policy Box/Authority Gate
+
+L4 is therefore a governance evaluation of L3, not a fifth stochastic model condition.
+
+Provider-setting clarification
+
+The study holds the behavioral contract constant across providers: the same business task, condition-specific visible state, handoff constraints, response schema, semantic parser, and deterministic Policy Box evaluation. It does not claim that provider-native “medium” reasoning/thinking settings are computationally identical.
+
+OpenAI
+
+The OpenAI replication uses the configured GPT-5.6 Sol, Terra, and Luna slots through the Responses API with the frozen settings recorded in config/models.json.
+
+Anthropic
+
+The frozen config/models.json contains a historical temperature: 1.0 field under the Anthropic settings. The actual AnthropicProvider adapter does not transmit temperature, top_p, or top_k. The adapter uses the provider-native output_config for medium effort and structured JSON output. This is intentional and is documented in the source code and docs/provider_notes.md.
+
+Do not edit the frozen configuration merely to make its prose-like fields match current provider terminology after the fact. The manifest hash preserves what was frozen; the adapter source preserves what was actually sent.
+
+Gemini
+
+Gemini 3.8 Flash uses medium thinking and schema-constrained response formatting. The adapter does not send temperature/top-p/top-k overrides under the frozen implementation.
+
+Provider-specific output-token limits differ because the APIs account for reasoning and output budgets differently. The study matches the experimental contract rather than asserting parameter equality across providers.
+
+Data handling and research integrity
+
+The collector records each scheduled trajectory before and after execution. Completed runs and terminal technical failures are not replaced. Publication-safe output removes raw prompts, model rationales, and provider response identifiers while retaining the variables required to reproduce the reported analysis.
+
+The confirmatory package includes, among other artifacts:
+
+results/confirmatory_manifest.json
+results/confirmatory_redacted.json
+results/confirmatory_summary.json
+results/confirmatory_rates.csv
+results/confirmatory_block_table.csv
+results/confirmatory_hypotheses.json
+results/provider_summary.csv
+results/missing_data_sensitivity.json
+
+The raw runtime ledger remains outside the public ZIP/Git distribution. Reanalysis of the publication-safe outcome variables does not require new API calls. A new live run is a replication, not a replacement for the frozen confirmatory sample.
+
+Authority corpus and semantic-policy limitation
+
+The external authority corpus contains 45 coded decision-right records from 18 civilian primary sources across 11 coded institutional source groupings and 11 domains. It is a grounding set, not a representative sample and not evidence that UCA occurred in the institutions represented by those sources.
+
+The Policy Box's semantic decision rules are researcher-specified for the synthetic experimental scenarios. That is an explicit limitation. Before journal submission, a stronger validation step would use at least two independent reviewers or domain experts, blinded to trajectory outcomes, to code the authority corpus and/or semantic decision classifications and report inter-rater agreement. A field study should additionally validate decision rules with actual process owners.
+
+AI-assisted software-development disclosure
+
+The research question, conceptual framework, experimental design, task structure, hypotheses, research methods, analysis, interpretation, and manuscript were developed by the author. OpenAI ChatGPT was used to accelerate portions of software coding, debugging, and implementation based on author-defined specifications.
+
+The author reviewed the code and outputs, ran the automated and deterministic checks, and takes responsibility for the implementation and findings.
+
+The same disclosure is preserved in docs/ai_assistance.md so it remains attached to the computational artifact when the repository is shared separately from the paper.
+
+Moving a ZIP into a GitHub repository
+
+If this folder is downloaded as a ZIP and is being initialized as a new repository:
+
 git init
 git branch -M main
 git remote add origin https://github.com/HansITAcademy/unapproved-sum-lab.git
 git add .
 git commit -m "Clean lab rebuild"
 git push -u origin main
-```
 
-After that, I stay on `main` for the entire study.
+For the actual confirmatory record, preserve the repository/release that contains the original frozen tag rather than treating a newly initialized ZIP as equivalent provenance.
 
-## A note on model settings
+Interpretation boundary
 
-I keep the original OpenAI settings used in the earlier experiment: medium reasoning, temperature 1.0, no top-p override, and structured JSON output.
+This lab is designed to test a specific mechanism:
 
-Claude and Gemini use the closest native equivalents: medium effort/thinking and schema-constrained JSON. Claude keeps temperature 1.0; Gemini 3.8 Flash does not get a temperature/top-p override because Google’s current migration guidance says to remove those sampling parameters and use `thinking_level` instead. Their output-token limits are larger because the providers account for reasoning/output budgets differently. I am matching the behavioral contract, not pretending the providers expose identical inference controls. The exact settings are frozen in `config/models.json` and described in `docs/provider_notes.md`.
+locally authorized actions can form a connected causal workflow that instantiates a policy-defined institutional decision requiring authority not delegated to that workflow.
 
-## AI-assisted coding disclosure
+It does not claim that every cross-agent bridge is problematic, that the observed rates estimate enterprise prevalence, that every decision-right can be reduced to a scalar authority level, or that the whole-workflow gate solves policy interpretation automatically.
 
-I designed the research question, conceptual framework, experimental design, task structure, hypotheses, and interpretation. I used ChatGPT to accelerate parts of the software implementation and cleanup of this lab. I reviewed the code, ran the tests, and take responsibility for the implementation and the findings.
-
-That disclosure is also kept in `docs/ai_assistance.md` so it does not get lost when the repository is shared independently from the paper.
+The intended governance implication is narrower: authorization of the components should not automatically be treated as authorization of the institutional decision produced by their composition.
