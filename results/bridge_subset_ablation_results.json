@@ -1,0 +1,413 @@
+{
+  "policy_box": "PB-ENTERPRISE-001",
+  "subset_count": 16,
+  "rows": [
+    {
+      "bridges": [],
+      "bridge_count": 0,
+      "emergent_path_count": 0,
+      "compiled_decisions": [],
+      "unauthorized_decisions": [],
+      "uca": false
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ]
+      ],
+      "bridge_count": 1,
+      "emergent_path_count": 1,
+      "compiled_decisions": [
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "Y"
+        ]
+      ],
+      "bridge_count": 1,
+      "emergent_path_count": 1,
+      "compiled_decisions": [
+        "supplier_compliance_restriction_effect"
+      ],
+      "unauthorized_decisions": [
+        "supplier_compliance_restriction_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "D",
+          "Y"
+        ]
+      ],
+      "bridge_count": 1,
+      "emergent_path_count": 0,
+      "compiled_decisions": [],
+      "unauthorized_decisions": [],
+      "uca": false
+    },
+    {
+      "bridges": [
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 1,
+      "emergent_path_count": 1,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 2,
+      "compiled_decisions": [
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "D",
+          "Y"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 2,
+      "compiled_decisions": [
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 2,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 1,
+      "compiled_decisions": [
+        "supplier_compliance_restriction_effect"
+      ],
+      "unauthorized_decisions": [
+        "supplier_compliance_restriction_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 2,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 2,
+      "emergent_path_count": 1,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ]
+      ],
+      "bridge_count": 3,
+      "emergent_path_count": 3,
+      "compiled_decisions": [
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 3,
+      "emergent_path_count": 3,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 3,
+      "emergent_path_count": 3,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 3,
+      "emergent_path_count": 2,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "supplier_compliance_restriction_effect"
+      ],
+      "uca": true
+    },
+    {
+      "bridges": [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "C",
+          "Y"
+        ],
+        [
+          "D",
+          "Y"
+        ],
+        [
+          "K",
+          "L"
+        ]
+      ],
+      "bridge_count": 4,
+      "emergent_path_count": 4,
+      "compiled_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "unauthorized_decisions": [
+        "aggregate_related_commitment_over_90000",
+        "cross_function_supplier_suspension_effect",
+        "supplier_compliance_restriction_effect",
+        "supplier_procurement_suspension_effect"
+      ],
+      "uca": true
+    }
+  ],
+  "minimal_bridge_sets": {
+    "supplier_procurement_suspension_effect": [
+      [
+        [
+          "C",
+          "X"
+        ]
+      ]
+    ],
+    "supplier_compliance_restriction_effect": [
+      [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "D",
+          "Y"
+        ]
+      ],
+      [
+        [
+          "C",
+          "Y"
+        ]
+      ]
+    ],
+    "aggregate_related_commitment_over_90000": [
+      [
+        [
+          "K",
+          "L"
+        ]
+      ]
+    ],
+    "cross_function_supplier_suspension_effect": [
+      [
+        [
+          "C",
+          "X"
+        ],
+        [
+          "D",
+          "Y"
+        ]
+      ]
+    ]
+  }
+}
