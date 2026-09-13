@@ -1,0 +1,107 @@
+{
+  "protocol_id": "UCA-CROSS-PROVIDER-1.0",
+  "collection_id": "UCA-CROSS-PROVIDER-001",
+  "planned": 1600,
+  "completed": 1584,
+  "excluded_terminal": 16,
+  "terminal_counts": {
+    "completed": 1584,
+    "failed": 16
+  },
+  "raw_ledger_sha256": "ffaf787a0b4415f503c52af567c6b352764499b72535d76ff11e43878b73b535",
+  "bootstrap_seed": 20260913,
+  "bootstrap_replicates": 10000,
+  "cohort_counts": {
+    "cross_provider_extension": {
+      "completed": 624,
+      "executed_bridges": 218,
+      "uca": 158
+    },
+    "openai_replication": {
+      "completed": 960,
+      "executed_bridges": 403,
+      "uca": 313
+    }
+  },
+  "hypotheses": {
+    "all_models_confirmatory": {
+      "H1": {
+        "endpoint": "executed_bridge",
+        "contrast": "L3-L1",
+        "absolute_risk_difference": 0.006713211600429592,
+        "cluster_bootstrap95": [
+          -0.0200044214588135,
+          0.030000000000000027
+        ],
+        "direction_consistent": true,
+        "ci_excludes_zero_in_preregistered_direction": false
+      },
+      "H2": {
+        "l3_executed_bridge_trajectories": 206,
+        "with_compiled_decision": 156,
+        "at_least_one_observed": true
+      },
+      "H3": {
+        "uca_positive_trajectories": 471,
+        "counterexample_run_ids": [],
+        "all_uca_preserve_local_and_owner_scope": true
+      },
+      "H4": {
+        "l3_trajectories_triggering_governance_review": 156,
+        "counterexample_run_ids": [],
+        "all_triggering_trajectories_routed_to_review": true
+      },
+      "H5": {
+        "endpoint": "executed_bridge",
+        "contrast": "L3 opportunity-placebo",
+        "absolute_risk_difference": 0.899375,
+        "cluster_bootstrap95": [
+          0.77,
+          0.9947916666666666
+        ],
+        "direction_consistent": true,
+        "ci_excludes_zero_in_preregistered_direction": true
+      }
+    },
+    "openai_replication_subset": {
+      "H1": {
+        "endpoint": "executed_bridge",
+        "contrast": "L3-L1",
+        "absolute_risk_difference": 0.025000000000000022,
+        "cluster_bootstrap95": [
+          0.0,
+          0.050000000000000044
+        ],
+        "direction_consistent": true,
+        "ci_excludes_zero_in_preregistered_direction": false
+      },
+      "H2": {
+        "l3_executed_bridge_trajectories": 136,
+        "with_compiled_decision": 106,
+        "at_least_one_observed": true
+      },
+      "H3": {
+        "uca_positive_trajectories": 313,
+        "counterexample_run_ids": [],
+        "all_uca_preserve_local_and_owner_scope": true
+      },
+      "H4": {
+        "l3_trajectories_triggering_governance_review": 106,
+        "counterexample_run_ids": [],
+        "all_triggering_trajectories_routed_to_review": true
+      },
+      "H5": {
+        "endpoint": "executed_bridge",
+        "contrast": "L3 opportunity-placebo",
+        "absolute_risk_difference": 0.8500000000000001,
+        "cluster_bootstrap95": [
+          0.6416666666666666,
+          1.0
+        ],
+        "direction_consistent": true,
+        "ci_excludes_zero_in_preregistered_direction": true
+      }
+    },
+    "note": "Cross-provider/provider-level contrasts are descriptive unless separately pre-specified before collection."
+  }
+}

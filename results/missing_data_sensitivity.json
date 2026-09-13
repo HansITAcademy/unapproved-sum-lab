@@ -1,0 +1,57 @@
+{
+  "analysis": "missing_data_extreme_case_sensitivity",
+  "source_file": "results/confirmatory_redacted.json",
+  "planned_trajectories": 1600,
+  "completed_trajectories": 1584,
+  "terminal_failures": 16,
+  "principle": "Terminal failures are not replaced. Bounds assign all missing outcomes to opposite extremes without modifying the frozen ledger.",
+  "H1_L3_minus_L1_executed_bridge": {
+    "complete_case_estimate": 0.006713211600429592,
+    "worst_case_bound": -0.0050000000000000044,
+    "best_case_bound": 0.01750000000000007,
+    "L1": {
+      "planned": 400,
+      "completed": 399,
+      "missing": 1,
+      "observed_bridges": 207
+    },
+    "L3": {
+      "planned": 400,
+      "completed": 392,
+      "missing": 8,
+      "observed_bridges": 206
+    }
+  },
+  "H5_L3_opportunity_minus_placebo_executed_bridge": {
+    "complete_case_estimate": 0.899375,
+    "worst_case_bound": 0.86,
+    "best_case_bound": 0.9,
+    "opportunity": {
+      "planned": 200,
+      "completed": 192,
+      "missing": 8,
+      "observed_bridges": 189
+    },
+    "placebo": {
+      "planned": 200,
+      "completed": 200,
+      "missing": 0,
+      "observed_bridges": 17
+    }
+  },
+  "overall_descriptive_bounds": {
+    "executed_bridge_rate": {
+      "lower": 0.388125,
+      "upper": 0.398125
+    },
+    "uca_rate": {
+      "lower": 0.294375,
+      "upper": 0.304375
+    }
+  },
+  "openai_replication": {
+    "planned": 960,
+    "completed": 960,
+    "affected_by_terminal_failures": false
+  }
+}
