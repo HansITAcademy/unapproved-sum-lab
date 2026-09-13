@@ -55,10 +55,12 @@ def sha256_text(text: str) -> str:
 def _int_attr(obj: Any, *names: str) -> int | None:
     if obj is None:
         return None
+
     for name in names:
         value = getattr(obj, name, None)
         if isinstance(value, int):
             return value
+
     return None
 
 
@@ -66,6 +68,7 @@ class BaseProvider:
     def __init__(self, model_spec: ModelSpec, *, max_attempts: int = 3):
         if max_attempts < 1:
             raise ValueError("max_attempts_must_be_positive")
+
         self.model_spec = model_spec
         self.max_attempts = max_attempts
         self.audit_log: list[ProviderCallAudit] = []
@@ -84,14 +87,18 @@ class BaseProvider:
         current_event_id: str,
     ) -> str:
         last_error: Exception | None = None
+
         for attempt in range(1, self.max_attempts + 1):
             started = time.perf_counter()
+
             try:
                 raw, meta = self._call(prompt)
                 latency_ms = int((time.perf_counter() - started) * 1000)
+
                 raw = raw.strip()
                 if not raw:
                     raise ValueError("empty_model_output")
+
                 self.audit_log.append(
                     ProviderCallAudit(
                         provider=self.model_spec.provider,
@@ -113,9 +120,12 @@ class BaseProvider:
                         timestamp_utc=datetime.now(timezone.utc).isoformat(),
                     )
                 )
+
                 return raw
+
             except Exception as exc:
                 last_error = exc
+
                 self.error_log.append(
                     {
                         "provider": self.model_spec.provider,
@@ -130,9 +140,12 @@ class BaseProvider:
                         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
                     }
                 )
+
                 if attempt < self.max_attempts:
                     time.sleep(1.5 * attempt)
+
         assert last_error is not None
+
         raise RuntimeError(
             f"provider_failed:{self.model_spec.provider}:{self.model_spec.model_id}:"
             f"{task_id}:{condition_id}:{current_event_id}"
@@ -143,24 +156,39 @@ class BaseProvider:
 
 
 class OpenAIProvider(BaseProvider):
-    def __init__(self, model_spec: ModelSpec, *, client: Any | None = None, max_attempts: int = 3):
+    def __init__(
+        self,
+        model_spec: ModelSpec,
+        *,
+        client: Any | None = None,
+        max_attempts: int = 3,
+    ):
         if model_spec.provider != "openai":
-            raise ValueError(f"wrong_provider_for_openai_adapter:{model_spec.provider}")
+            raise ValueError(
+                f"wrong_provider_for_openai_adapter:{model_spec.provider}"
+            )
+
         super().__init__(model_spec, max_attempts=max_attempts)
+
         if client is None:
             if not os.getenv("OPENAI_API_KEY"):
                 raise RuntimeError("OPENAI_API_KEY is not set")
+
             from openai import OpenAI
 
             client = OpenAI()
+
         self.client = client
 
     def _call(self, prompt: str) -> tuple[str, dict[str, Any]]:
         settings = self.model_spec.settings
+
         kwargs: dict[str, Any] = {
             "model": self.model_spec.model_id,
             "input": prompt,
-            "reasoning": {"effort": settings["reasoning_effort"]},
+            "reasoning": {
+                "effort": settings["reasoning_effort"],
+            },
             "temperature": float(settings["temperature"]),
             "max_output_tokens": int(settings["max_output_tokens"]),
             "store": bool(settings.get("store", False)),
@@ -173,12 +201,21 @@ class OpenAIProvider(BaseProvider):
                 }
             },
         }
+
         if settings.get("top_p") is not None:
             kwargs["top_p"] = float(settings["top_p"])
+
         response = self.client.responses.create(**kwargs)
+
         raw = str(getattr(response, "output_text", "") or "")
+
         usage = getattr(response, "usage", None)
-        details = getattr(usage, "output_tokens_details", None) if usage else None
+        details = (
+            getattr(usage, "output_tokens_details", None)
+            if usage
+            else None
+        )
+
         return raw, {
             "response_model_id": getattr(response, "model", None),
             "response_id": getattr(response, "id", None),
@@ -190,42 +227,77 @@ class OpenAIProvider(BaseProvider):
 
 
 class AnthropicProvider(BaseProvider):
-    def __init__(self, model_spec: ModelSpec, *, client: Any | None = None, max_attempts: int = 3):
+    def __init__(
+        self,
+        model_spec: ModelSpec,
+        *,
+        client: Any | None = None,
+        max_attempts: int = 3,
+    ):
         if model_spec.provider != "anthropic":
-            raise ValueError(f"wrong_provider_for_anthropic_adapter:{model_spec.provider}")
+            raise ValueError(
+                f"wrong_provider_for_anthropic_adapter:{model_spec.provider}"
+            )
+
         super().__init__(model_spec, max_attempts=max_attempts)
+
         if client is None:
             if not os.getenv("ANTHROPIC_API_KEY"):
                 raise RuntimeError("ANTHROPIC_API_KEY is not set")
+
             from anthropic import Anthropic
 
             client = Anthropic()
+
         self.client = client
 
     def _call(self, prompt: str) -> tuple[str, dict[str, Any]]:
         settings = self.model_spec.settings
+
+        # Current Claude models no longer accept temperature/top_p/top_k
+        # through messages.create(). Reasoning effort and structured output
+        # are controlled through output_config instead.
         kwargs: dict[str, Any] = {
             "model": self.model_spec.model_id,
             "max_tokens": int(settings["max_output_tokens"]),
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": float(settings["temperature"]),
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
             "output_config": {
                 "effort": settings["effort"],
-                "format": {"type": "json_schema", "schema": AGENT_CHOICE_SCHEMA},
+                "format": {
+                    "type": "json_schema",
+                    "schema": AGENT_CHOICE_SCHEMA,
+                },
             },
         }
-        if settings.get("top_p") is not None:
-            kwargs["top_p"] = float(settings["top_p"])
+
         response = self.client.messages.create(**kwargs)
-        texts = [getattr(block, "text", "") for block in response.content if getattr(block, "type", None) == "text"]
+
+        texts = [
+            getattr(block, "text", "")
+            for block in response.content
+            if getattr(block, "type", None) == "text"
+        ]
         raw = "".join(texts)
+
         usage = getattr(response, "usage", None)
-        details = getattr(usage, "output_tokens_details", None) if usage else None
+        details = (
+            getattr(usage, "output_tokens_details", None)
+            if usage
+            else None
+        )
+
         input_tokens = _int_attr(usage, "input_tokens")
         output_tokens = _int_attr(usage, "output_tokens")
+
         total_tokens = None
         if input_tokens is not None and output_tokens is not None:
             total_tokens = input_tokens + output_tokens
+
         return raw, {
             "response_model_id": getattr(response, "model", None),
             "response_id": getattr(response, "id", None),
@@ -237,20 +309,33 @@ class AnthropicProvider(BaseProvider):
 
 
 class GeminiProvider(BaseProvider):
-    def __init__(self, model_spec: ModelSpec, *, client: Any | None = None, max_attempts: int = 3):
+    def __init__(
+        self,
+        model_spec: ModelSpec,
+        *,
+        client: Any | None = None,
+        max_attempts: int = 3,
+    ):
         if model_spec.provider != "gemini":
-            raise ValueError(f"wrong_provider_for_gemini_adapter:{model_spec.provider}")
+            raise ValueError(
+                f"wrong_provider_for_gemini_adapter:{model_spec.provider}"
+            )
+
         super().__init__(model_spec, max_attempts=max_attempts)
+
         if client is None:
             if not os.getenv("GEMINI_API_KEY"):
                 raise RuntimeError("GEMINI_API_KEY is not set")
+
             from google import genai
 
             client = genai.Client()
+
         self.client = client
 
     def _call(self, prompt: str) -> tuple[str, dict[str, Any]]:
         settings = self.model_spec.settings
+
         # Gemini 3.8 Flash's current Interactions API migration guidance says to
         # remove sampling parameters such as temperature/top_p and control reasoning
         # with thinking_level instead. Keep this adapter aligned with that native API.
@@ -258,6 +343,7 @@ class GeminiProvider(BaseProvider):
             "thinking_level": settings["thinking_level"],
             "max_output_tokens": int(settings["max_output_tokens"]),
         }
+
         interaction = self.client.interactions.create(
             model=self.model_spec.model_id,
             input=prompt,
@@ -268,22 +354,59 @@ class GeminiProvider(BaseProvider):
                 "schema": AGENT_CHOICE_SCHEMA,
             },
         )
+
         usage = getattr(interaction, "usage", None)
+
         return str(getattr(interaction, "output_text", "") or ""), {
             "response_model_id": getattr(interaction, "model", None),
             "response_id": getattr(interaction, "id", None),
-            "input_tokens": _int_attr(usage, "total_input_tokens", "input_tokens"),
-            "output_tokens": _int_attr(usage, "total_output_tokens", "output_tokens"),
-            "reasoning_tokens": _int_attr(usage, "total_thought_tokens", "thought_tokens"),
-            "total_tokens": _int_attr(usage, "total_tokens"),
+            "input_tokens": _int_attr(
+                usage,
+                "total_input_tokens",
+                "input_tokens",
+            ),
+            "output_tokens": _int_attr(
+                usage,
+                "total_output_tokens",
+                "output_tokens",
+            ),
+            "reasoning_tokens": _int_attr(
+                usage,
+                "total_thought_tokens",
+                "thought_tokens",
+            ),
+            "total_tokens": _int_attr(
+                usage,
+                "total_tokens",
+            ),
         }
 
 
-def make_provider(model_spec: ModelSpec, *, max_attempts: int = 3, client: Any | None = None) -> BaseProvider:
+def make_provider(
+    model_spec: ModelSpec,
+    *,
+    max_attempts: int = 3,
+    client: Any | None = None,
+) -> BaseProvider:
     if model_spec.provider == "openai":
-        return OpenAIProvider(model_spec, client=client, max_attempts=max_attempts)
+        return OpenAIProvider(
+            model_spec,
+            client=client,
+            max_attempts=max_attempts,
+        )
+
     if model_spec.provider == "anthropic":
-        return AnthropicProvider(model_spec, client=client, max_attempts=max_attempts)
+        return AnthropicProvider(
+            model_spec,
+            client=client,
+            max_attempts=max_attempts,
+        )
+
     if model_spec.provider == "gemini":
-        return GeminiProvider(model_spec, client=client, max_attempts=max_attempts)
+        return GeminiProvider(
+            model_spec,
+            client=client,
+            max_attempts=max_attempts,
+        )
+
     raise ValueError(f"unsupported_provider:{model_spec.provider}")

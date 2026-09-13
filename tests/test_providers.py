@@ -85,7 +85,8 @@ def test_anthropic_adapter_uses_json_schema_output_config():
     kwargs = client.messages.kwargs[0]
     assert kwargs["output_config"]["effort"] == "medium"
     assert kwargs["output_config"]["format"]["type"] == "json_schema"
-
+    assert "temperature" not in kwargs
+    assert "top_p" not in kwargs    
 
 class GUsage:
     total_input_tokens = 12
