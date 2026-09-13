@@ -1,0 +1,163 @@
+{
+  "cases": [
+    {
+      "case_id": "CG-01-PROPOSAL-DECISION-SPLIT",
+      "title": "Proposal authority does not compile into final decision authority",
+      "authority_pattern": "proposal_decision_split",
+      "source_record_ids": [
+        "CIV-011",
+        "CIV-012"
+      ],
+      "grounding_note": "OPM distinguishes the management official with delegated authority to propose an adverse action from the designated deciding official who makes the final decision.",
+      "all_actions_locally_authorized": true,
+      "all_agents_exactly_match_owner_scope": true,
+      "causal_edges": [
+        [
+          "proposal_notice",
+          "interim_restriction"
+        ],
+        [
+          "interim_restriction",
+          "status_record"
+        ]
+      ],
+      "compiled_decisions": [
+        "final_adverse_action_effect"
+      ],
+      "required_approval_paths": [
+        [
+          "deciding_official"
+        ]
+      ],
+      "workflow_delegated_decisions": [
+        "proposal_processing"
+      ],
+      "workflow_approval_evidence": [
+        "proposing_official"
+      ],
+      "uca": true,
+      "causal_cut_compiled_decisions": [],
+      "causal_cut_uca": false
+    },
+    {
+      "case_id": "CG-02-THRESHOLD-ESCALATION",
+      "title": "Sub-threshold local approvals can compile into an above-threshold decision",
+      "authority_pattern": "threshold_escalation",
+      "source_record_ids": [
+        "CIV-006"
+      ],
+      "grounding_note": "FAR 50.102-1(b) reserves approval of requests to obligate the Government above $90,000 to secretarial level or above.",
+      "all_actions_locally_authorized": true,
+      "all_agents_exactly_match_owner_scope": true,
+      "causal_edges": [
+        [
+          "component_a",
+          "component_b"
+        ]
+      ],
+      "compiled_decisions": [
+        "aggregate_obligation_over_90000_effect"
+      ],
+      "required_approval_paths": [
+        [
+          "secretarial_level"
+        ]
+      ],
+      "workflow_delegated_decisions": [
+        "component_obligation_processing"
+      ],
+      "workflow_approval_evidence": [
+        "delegated_agency_official"
+      ],
+      "uca": true,
+      "causal_cut_compiled_decisions": [],
+      "causal_cut_uca": false
+    },
+    {
+      "case_id": "CG-03-RESERVED-ROLE",
+      "title": "Locally authorized administration does not compile into a reserved contract decision",
+      "authority_pattern": "reserved_role",
+      "source_record_ids": [
+        "CIV-004",
+        "CIV-005"
+      ],
+      "grounding_note": "The FAR states that a COR may perform delegated monitoring/administration but has no authority to make commitments or changes affecting contract price, quality, quantity, delivery, or other terms, and the COR's delegated authority is not redelegable.",
+      "all_actions_locally_authorized": true,
+      "all_agents_exactly_match_owner_scope": true,
+      "causal_edges": [
+        [
+          "performance_variance",
+          "acceptance_recommendation"
+        ],
+        [
+          "acceptance_recommendation",
+          "delivery_change"
+        ]
+      ],
+      "compiled_decisions": [
+        "contract_terms_change_effect"
+      ],
+      "required_approval_paths": [
+        [
+          "contracting_officer"
+        ]
+      ],
+      "workflow_delegated_decisions": [
+        "technical_contract_administration"
+      ],
+      "workflow_approval_evidence": [
+        "cor_designation"
+      ],
+      "uca": true,
+      "causal_cut_compiled_decisions": [],
+      "causal_cut_uca": false
+    },
+    {
+      "case_id": "CG-04-JOINT-APPROVAL",
+      "title": "Several valid approvals do not compile into the missing final approval",
+      "authority_pattern": "joint_approval",
+      "source_record_ids": [
+        "CIV-036"
+      ],
+      "grounding_note": "IRS Delegation Order 6-22 states that an individual monetary award above $25,000 and up to $50,000 requires approval by the Chief Operating Officer, Treasury, OPM, and final approval by the President, and is not redelegable.",
+      "all_actions_locally_authorized": true,
+      "all_agents_exactly_match_owner_scope": true,
+      "causal_edges": [
+        [
+          "coo_approval",
+          "treasury_approval"
+        ],
+        [
+          "treasury_approval",
+          "opm_approval"
+        ],
+        [
+          "opm_approval",
+          "award_payment"
+        ]
+      ],
+      "compiled_decisions": [
+        "high_value_award_effect"
+      ],
+      "required_approval_paths": [
+        [
+          "chief_operating_officer",
+          "department_of_treasury",
+          "opm",
+          "president"
+        ]
+      ],
+      "workflow_delegated_decisions": [
+        "award_processing"
+      ],
+      "workflow_approval_evidence": [
+        "chief_operating_officer",
+        "department_of_treasury",
+        "opm"
+      ],
+      "uca": true,
+      "causal_cut_compiled_decisions": [],
+      "causal_cut_uca": false
+    }
+  ]
+}
