@@ -62,7 +62,7 @@ T03 bridges in 150/150 connected completed trajectories and produces 0 UCA event
 
 H1 is retained as a negative result: the L3-minus-L1 executed-bridge difference is approximately +0.67 percentage points and does not support the pre-specified prediction that added flexibility increases bridge formation
 
-H5 is supported: L3 opportunity tasks bridge in 189/192 completed trajectories (98.4%) versus 17/200 (8.5%) for placebo tasks
+H5 is supported: L3 opportunity tasks bridge in 189/192 completed trajectories (98.4%) versus 17/200 (8.5%) for negative-controls tasks
 
 The extreme-case missing-data sensitivity analysis leaves the H5 difference strongly positive
 
