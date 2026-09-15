@@ -38,5 +38,5 @@ It does not prove that every documented policy can be represented by one univers
 Run:
 
 ```bash
-uv run python experiments/00_analyze_authority_corpus.py
+uv run python experiments/01_authority_corpus.py
 ```
