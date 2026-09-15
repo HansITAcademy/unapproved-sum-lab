@@ -76,7 +76,7 @@ The inherited confirmatory tests remain:
 - H2: at least one `L3` bridge trajectory produces a policy-defined institutional decision;
 - H3: every UCA classification preserves local authorization and owner-faithful scope;
 - H4: every `L3` trajectory meeting the frozen governance-review criterion is routed to review in paired `L4` replay; and
-- H5: bridge-opportunity tasks have a higher `L3` executed-bridge rate than placebo/local-resolution tasks.
+- H5: bridge-opportunity tasks have a higher `L3` executed-bridge rate than negative-control/local-resolution tasks.
 
 H1 and H5 use absolute risk differences and 10,000 cluster-bootstrap replicates at the model-by-task level. The analysis reports these tests for the full frozen five-model cohort and separately for the exact OpenAI replication subset.
 
