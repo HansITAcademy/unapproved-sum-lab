@@ -1,0 +1,33 @@
+{
+  "protocol_id": "UCA-INDEPENDENT-DOWNSTREAM-PILOT-0.1",
+  "status": "DRAFT_NOT_FROZEN_NOT_EVIDENCE",
+  "notes": "A separate follow-up; never append these runs to the original 1600-trajectory study.",
+  "commitment_groups": {
+    "T05_RELATED_COMMITMENT_THRESHOLD": {"K": "same_program", "M": "same_program"},
+    "T06_UNRELATED_COMMITMENT_PLACEBO": {"K": "supplier_project_one", "M": "supplier_project_two"}
+  },
+  "controls": {
+    "missing_both": {"approved_extra_edges": [], "delegated_decisions": [], "approval_attestations": []},
+    "process_only": {"approved_extra_edges": [["C", "X"], ["C", "Y"], ["D", "Y"], ["K", "L"]], "delegated_decisions": [], "approval_attestations": []},
+    "authority_only": {
+      "approved_extra_edges": [],
+      "delegated_decisions": ["supplier_procurement_suspension_effect", "supplier_compliance_restriction_effect", "cross_function_supplier_suspension_effect", "aggregate_related_commitment_over_90000"],
+      "approval_attestations": [
+        {"role": "chief_procurement_officer", "actor_id": "approver_proc"},
+        {"role": "chief_compliance_officer", "actor_id": "approver_comp"},
+        {"role": "chief_financial_officer", "actor_id": "approver_fin"},
+        {"role": "independent_compliance_reviewer", "actor_id": "approver_independent"}
+      ]
+    },
+    "approved_both": {
+      "approved_extra_edges": [["C", "X"], ["C", "Y"], ["D", "Y"], ["K", "L"]],
+      "delegated_decisions": ["supplier_procurement_suspension_effect", "supplier_compliance_restriction_effect", "cross_function_supplier_suspension_effect", "aggregate_related_commitment_over_90000"],
+      "approval_attestations": [
+        {"role": "chief_procurement_officer", "actor_id": "approver_proc"},
+        {"role": "chief_compliance_officer", "actor_id": "approver_comp"},
+        {"role": "chief_financial_officer", "actor_id": "approver_fin"},
+        {"role": "independent_compliance_reviewer", "actor_id": "approver_independent"}
+      ]
+    }
+  }
+}
