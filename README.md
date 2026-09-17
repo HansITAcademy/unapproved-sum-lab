@@ -1,6 +1,6 @@
 Unapproved Sum Lab
 
-Publication package date: 1 October 2026
+Publication package date: 23 September 2026
 
 This repository contains the clean computational lab for The Unapproved Sum / Compiled Authority research. It was rebuilt from the publication study so the experiment can be reproduced from a fresh repository without carrying forward draft branches, reading notes, slide decks, or historical working files.
 
